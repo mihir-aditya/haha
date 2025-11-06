@@ -74,7 +74,7 @@
         right: 1;
         transform: scaleX(-1) translate(120px);
     }
-    .jk {
+    .jk , .sitanshu {
   position: relative;
   margin: auto;
   /* background-color: #45a049; enables stacking of images */
@@ -144,6 +144,28 @@
         opacity: 1;
     }
 }
+.sitanshu {
+    position: relative;
+    z-index: 4;
+    animation: fleet 0.5s ease infinite;
+}
+@keyframes fleet {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-60px); }
+    100% { transform: translateY(0px); }
+}
+.dil{
+    animation: none;
+    position: fixed;
+    z-index: 1;
+      top: 30px;          /* adjust position */
+  left: 20px;
+  transform-origin: center;
+  transform :rotate(18deg) translateY(2px) ;
+  width: 400px; 
+       
+}
+
 </style>
 
 <body>
@@ -166,7 +188,6 @@
     </div>
 
     <div class="main" id="container">
-        
     </div>
 
 </body>
@@ -230,16 +251,33 @@ function LoadJK() {
     }
 
     function LoadSitanshu() {
-        document.getElementById("container").innerHTML = "<h1>Sitanshu</h1>";
+        document.getElementById("container").innerHTML = `
+        <div class="sitanshu">
+            <img src="sitanshu.png"  class="sitanshu" style="transform: scale();" alt="">
+            <img src="dil.png" class="dil" alt="">
+            <audio src="gawk-gawk.mp3" loop autoplay></audio>
+        </div>
+        `;
     }
 
     function LoadPrince() {
         document.getElementById("container").innerHTML = "<h1>Prince</h1>";
     }
-    window.addEventListener("click", function enableAudio() {
+    // Enable audio on click (for autoplay policy)
+window.addEventListener("click", function enableAudio() {
     document.querySelectorAll("audio").forEach(a => a.muted = false);
     window.removeEventListener("click", enableAudio);
 });
+
+// Create and play the repeating sound
+const animeAhh = new Audio('anime-ahh.mp3');
+animeAhh.volume = 0.7; // 70% volume
+
+// Play sound every 4 seconds
+setInterval(() => {
+    animeAhh.currentTime = 0; // Reset to start
+    animeAhh.play();
+}, 4000); // 4000ms = 4 seconds
 
 </script>
 
