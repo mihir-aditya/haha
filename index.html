@@ -167,24 +167,41 @@
 }
 
 
-.adi{
-    position: fixed;
-    top: -250px;
-    left: 450px;
-    transform: scale(0.7);
-    z-index: 0;
-}
-.ad1{
+.aditya {
     position: relative;
-    z-index: 1;
-    transform: scale(2) translateX(-50px) translateY(35px);
-    animation: thrust 0.4s ease infinite;
-    /* animation: fleet 0.5s ease infinite; */
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
+
+.adi {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: auto;
+    transform-origin: center center;
+    transform: translate(-50%, -50%) translateX(150px) scale(2);
+    z-index: 1;
+}
+
+.ad1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: auto;
+    /* transform: translateX(5000px) translateY(35px) ; */
+    z-index: 2;
+    animation: thrust 0.4s ease infinite;
+}
+
 @keyframes thrust {
-    0% { transform: scale(2) translateX(-50px) translateY(35px); }
-    50% { transform: scale(2) translateX(-50px) translateY(15px); }
-    100% { transform: scale(2) translateX(-50px) translateY(35px); }
+    0% { transform: translate(-50%, -50%) scale(2) translateY(35px); }
+    50% { transform: translate(-50%, -50%) scale(2) translateY(15px); }
+    100% { transform: translate(-50%, -50%) scale(2) translateY(35px); }
 }
 </style>
 
@@ -215,9 +232,10 @@
 
 <script>
     function LoadAditya() {
-        document.getElementById("container").innerHTML = `<div class="aditya">
-            <img src="aditya.png" alt="" class="adi">
-            <img src="ad1.png" alt="" class="ad1">
+        document.getElementById("container").innerHTML = `
+        <div class="aditya">
+            <img src="aditya.png" alt="Aditya base" class="adi">
+            <img src="ad1.png" alt="Aditya overlay" class="ad1">
             <audio src="clap.mp3" loop autoplay></audio>
             <audio src="mon.mp3" loop autoplay></audio>
         </div>`;
