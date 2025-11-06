@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-color: pink;
+    }
+
+    .options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    button {
+        padding: 20px 20px;
+        font-size: 16px;
+        margin: 20px 0px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        z-index: 1;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    #app h1 {
+        text-align: center;
+        font-size: 75px;
+        font-family: 'bubblegum sans', sans-serif;
+        margin: 0;
+    }
+
+    #app p {
+        text-align: center;
+        font-size: 30px;
+        font-family: 'bubblegum sans', sans-serif;
+        margin: 0;
+    }
+
+    .main {
+        text-align: center;
+        font-size: 50px;
+        font-family: 'bubblegum sans', sans-serif;
+        margin-top: 50px;
+    }
+
+    .sideimg {
+        position: fixed;
+        /* top: 0; */
+
+    }
+
+    .img1 {
+        right: 0;
+        transform: translate(120px);
+    }
+
+    .img2 {
+        right: 1;
+        transform: scaleX(-1) translate(120px);
+    }
+    .jk {
+  position: relative;
+  margin: auto;
+  /* background-color: #45a049; enables stacking of images */
+  width: 300px;       /* set width of base image */
+}.base-img {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  transform: translateX(-100px) scale(1.2);
+
+  /* speed will be controlled dynamically */
+  --animSpeed: 0.3s;
+  animation: float var(--animSpeed) ease-in-out infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateX(-100px) scale(1.2) translateY(0px); }
+  50%  { transform: translateX(-100px) scale(1.2) translateY(-15px); }
+  100% { transform: translateX(-100px) scale(1.2) translateY(0px); }
+}
+
+.controls {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 18px;
+}
+
+.overlay-img {  
+  top: 30px;          /* adjust position */
+  left: 40px;
+  width: 120px; 
+  transform: scale(-3.5) rotate(270deg) translate(60px  ) scaleX(-1) ;      /* change overlay size */
+}
+
+</style>
+
+<body>
+    <img class="sideimg img1" src="wallhaven-nklv7d-Photoroom.png" alt="">
+    <img class="sideimg img2" src="wallhaven-nklv7d-Photoroom.png" alt="">
+    <div id="app">
+        <h1>Fun Fucker</h1>
+        <p>Welcome to the Fun Fucker application!</p>
+        <p>Choose whom to fuck</p>
+
+        <div class="options">
+            <button onclick="LoadHarshita()">Harshita</button>
+            <button onclick="LoadJK()">Jaykishan</button>
+            <button onclick="LoadRLN()">Ram Lakhan Nagar</button>
+            <button onclick="LoadSitanshu()">Sitanshu</button>
+            <button onclick="LoadPrince()">Prince</button>
+            <button onclick="LoadAditya()">Aditya</button>
+
+        </div>
+    </div>
+
+    <div class="main" id="container">
+        
+    </div>
+
+</body>
+
+<script>
+    function LoadAditya() {
+        document.getElementById("container").innerHTML = "<h1>Aditya</h1>";
+    }
+
+    function LoadHarshita() {
+        document.getElementById("container").innerHTML = "<h1>Harshita</h1>";
+    }
+function LoadJK() {
+    document.getElementById("container").innerHTML = `
+        <div class="jk">
+            <img src="jk.png" class="base-img">
+            <img src="jkjony.png" class="overlay-img">
+            <audio src="chd.mp3" loop autoplay></audio>
+        </div>
+
+        <div class="controls">
+            <button id="slower">⬅ Slow</button>
+            <span id="speedValue">0.3s</span>
+            <button id="faster">Fast ➡</button>
+        </div>
+    `;
+
+    // Initialize speed controls after elements are created
+    let speed = 0.3; // default speed (seconds)
+    const imgDiv = document.querySelector('.base-img');
+    const speedDisplay = document.getElementById('speedValue');
+
+    // function to update animation duration
+    function updateSpeed() {
+        imgDiv.style.setProperty("--animSpeed", speed + "s");
+        speedDisplay.textContent = speed.toFixed(1) + "s";
+    }
+
+    // Set initial speed
+    updateSpeed();
+
+    // Add event listeners to buttons
+    document.getElementById("faster").addEventListener("click", () => {
+        if (speed > 0.1) speed -= 0.1; // prevents negative or too fast
+        updateSpeed();
+    });
+
+    document.getElementById("slower").addEventListener("click", () => {
+        speed += 0.1;
+        updateSpeed();
+    });
+}
+
+
+    function LoadRLN() {
+        document.getElementById("container").innerHTML = "<h1>Ram Lakhan Nagar</h1>";
+    }
+
+    function LoadSitanshu() {
+        document.getElementById("container").innerHTML = "<h1>Sitanshu</h1>";
+    }
+
+    function LoadPrince() {
+        document.getElementById("container").innerHTML = "<h1>Prince</h1>";
+    }
+</script>
+
+</html>
