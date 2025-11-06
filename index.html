@@ -166,6 +166,26 @@
        
 }
 
+
+.adi{
+    position: fixed;
+    top: -250px;
+    left: 450px;
+    transform: scale(0.7);
+    z-index: 0;
+}
+.ad1{
+    position: relative;
+    z-index: 1;
+    transform: scale(2) translateX(-50px) translateY(35px);
+    animation: thrust 0.4s ease infinite;
+    /* animation: fleet 0.5s ease infinite; */
+}
+@keyframes thrust {
+    0% { transform: scale(2) translateX(-50px) translateY(35px); }
+    50% { transform: scale(2) translateX(-50px) translateY(15px); }
+    100% { transform: scale(2) translateX(-50px) translateY(35px); }
+}
 </style>
 
 <body>
@@ -188,13 +208,19 @@
     </div>
 
     <div class="main" id="container">
+        
     </div>
 
 </body>
 
 <script>
     function LoadAditya() {
-        document.getElementById("container").innerHTML = "<h1>Aditya</h1>";
+        document.getElementById("container").innerHTML = `<div class="aditya">
+            <img src="aditya.png" alt="" class="adi">
+            <img src="ad1.png" alt="" class="ad1">
+            <audio src="clap.mp3" loop autoplay></audio>
+            <audio src="mon.mp3" loop autoplay></audio>
+        </div>`;
     }
 
     function LoadHarshita() {
