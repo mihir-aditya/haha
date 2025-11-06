@@ -113,7 +113,37 @@
   width: 120px; 
   transform: scale(-3.5) rotate(270deg) translate(60px  ) scaleX(-1) ;      /* change overlay size */
 }
+.harshita {
+    /* container for the image — keeps layout simple */
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.harshitaimg {
+    width: 300px;
+    display: block;
+    transform-origin: center center;
+    will-change: transform, opacity;
+    /* rotate + zoom from 0 to original size */
+    animation: rotateZoom 2s cubic-bezier(.2,.8,.2,1) forwards;
+    transform: rotate(-580deg) scale(0);
+    opacity: 0;
+    z-index: 3;
+}
+
+@keyframes rotateZoom {
+    from {
+        transform: rotate(-580deg) scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0deg) scale(1.5);
+        opacity: 1;
+    }
+}
 </style>
 
 <body>
@@ -147,7 +177,11 @@
     }
 
     function LoadHarshita() {
-        document.getElementById("container").innerHTML = "<h1>Harshita</h1>";
+        document.getElementById("container").innerHTML = `<div class="harshita" >
+            <img src="harshita.png" class="harshitaimg" alt="">
+            <audio src="atmkbfg.mp3" loop autoplay></audio>
+        </div>
+        `;
     }
 function LoadJK() {
     document.getElementById("container").innerHTML = `
