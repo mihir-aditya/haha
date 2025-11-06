@@ -202,6 +202,11 @@ function LoadJK() {
     function LoadPrince() {
         document.getElementById("container").innerHTML = "<h1>Prince</h1>";
     }
+    window.addEventListener("click", function enableAudio() {
+    document.querySelectorAll("audio").forEach(a => a.muted = false);
+    window.removeEventListener("click", enableAudio);
+});
+
 </script>
 
 </html>
